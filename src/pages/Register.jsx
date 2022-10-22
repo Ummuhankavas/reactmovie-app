@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { createUser } from '../auth/firebase';
 
 const Register = () => {
   const [firstName, setFirstName] = useState();
@@ -9,7 +10,8 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(firstName,lastName,email,password)};
+    console.log(firstName,lastName)};
+    createUser(email,password);
   return (
     <div className='d-flex justify-content-center'>
       <div className='form-image d-none  d-lg-block'>
