@@ -9,10 +9,10 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(firstName,lastName)};
+    console.log(firstName,lastName,email,password)};
   return (
     <div className='d-flex justify-content-center'>
-      <div className='form-image d-none d-md-bolck'>
+      <div className='form-image d-none  d-lg-block'>
         <img src={'https://picsum.photos/800/800'}  alt="sample-movie" />
       </div>
       <div className="register-form">
