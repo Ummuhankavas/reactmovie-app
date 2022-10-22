@@ -87,6 +87,7 @@ body {
 .navbar {
   padding: 1rem 3rem;
   background-color: #0d47a1 !important;
+  color: white !important;
 }
 
 .form-image {
