@@ -1,6 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const Register = () => {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(firstName,lastName)};
   return (
     <div className='d-flex justify-content-center'>
       <div className='form-image d-none d-md-bolck'>
@@ -8,7 +17,7 @@ const Register = () => {
       </div>
       <div className="register-form">
         <h1 className='form-title display-3'>Register</h1>
-        <form id='register'>
+        <form id='register' onSubmit={handleSubmit}>
           <div className="mb-3">
           <label htmlFor="firstName" className='form-label'>First Name</label>
             <input 
@@ -16,7 +25,9 @@ const Register = () => {
             className="form-control"
             id='firstName'
             placeholder='Enter your first name..'
-            required />
+            required
+            onChange={(e)=>setFirstName(e.target.value)} />
+            
           </div>
            
             <div className="mb-3">
@@ -26,7 +37,8 @@ const Register = () => {
             className="form-control"
             id='lastName'
             placeholder='Enter your last name..'
-            required />
+            required
+            onChange={(e)=>setLastName(e.target.value)} />
             </div>
             
             <div className="mb-3">
@@ -36,7 +48,8 @@ const Register = () => {
             className="form-control"
             id='email'
             placeholder='Enter your email adress..'
-            required />
+            required
+            onChange={(e)=>setEmail(e.target.value)} />
             </div>
            
             <div className="mb-3">
@@ -46,7 +59,8 @@ const Register = () => {
             className="form-control"
             id='password'
             placeholder='Enter your password..'
-            required />
+            required
+            onChange={(e)=>setPassword(e.target.value)} />
             </div>
             <input type="submit"
             className='btn btn-primary form-control'
