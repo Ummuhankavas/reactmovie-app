@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -25,10 +26,11 @@ export const createUser = async(email,password, navigate, displayName) =>{
       await updateProfile(auth.currentUser, {
         displayName: displayName, 
       });
+      toastSuccessNotify('Registered successfully!');
       navigate('/');
       console.log(userCredential);
     } catch (err) {
-        console.log(err);
+        toastErrorNotify(err.message);
     };
 };
 
@@ -36,10 +38,12 @@ export const signIn = async(email,password, navigate) =>{
     try {
       let userCredential= await  signInWithEmailAndPassword(auth, email, password);
       navigate('/');
+      toastSuccessNotify('Logged in successfully!');
     //   sessionStorage.setItem('user',JSON.stringify(userCredential.user));
     //   console.log(userCredential);
     console.log(userCredential);
     } catch (err) {
+      toastErrorNotify(err.message);
         console.log(err);
     };
 };
@@ -67,6 +71,7 @@ export const signUpProvider = (navigate) => {
   .then((result) => {
     console.log(result);
     navigate('/');
+    toastSuccessNotify('Logged out successfully!');
   }).catch((error) => {
     // Handle Errors here.
     console.log(error);
