@@ -69,7 +69,7 @@ export const signUpProvider = (navigate) => {
     navigate('/');
   }).catch((error) => {
     // Handle Errors here.
-    console.log(error)
+    console.log(error);
     
   });
 };
