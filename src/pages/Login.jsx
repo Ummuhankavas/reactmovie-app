@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
-import { signIn } from '../auth/firebase';
+import { signIn, signUpProvider } from '../auth/firebase';
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -13,13 +13,18 @@ const Login = () => {
     signIn(email,password,navigate);
     // console.log(email,password)
   };
+
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
+
   return (
     <div className='d-flex justify-content-center'>
       <div className='form-image d-none d-md-bolck'>
         <img src={'https://picsum.photos/800/800'}  alt="sample-movie" />
       </div>
       <div className="register-form">
-        <h1 className='form-title display-3'>Register</h1>
+        <h1 className='form-title display-3'>Login</h1>
         <form id='register' onSubmit={handleLogin}>
             
             <div className="mb-3">
@@ -50,7 +55,7 @@ const Login = () => {
             value='Login' /> 
                 
         </form>
-        <button className='btn btn-primary form-control'>Continue with Google</button>
+        <button className='btn btn-primary form-control' onClick={handleProviderLogin}>Continue with Google</button>
       </div>
     </div>
   );

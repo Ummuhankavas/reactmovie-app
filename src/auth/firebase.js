@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -61,3 +61,15 @@ export const logOut = () => {
     signOut(auth);
 };
 
+export const signUpProvider = (navigate) => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    console.log(result);
+    navigate('/');
+  }).catch((error) => {
+    // Handle Errors here.
+    console.log(error)
+    
+  });
+};
